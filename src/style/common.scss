@@ -1,0 +1,92 @@
+// 浮动
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+// flex
+.cm-flex{
+  display: flex;
+}
+.cm-flex-wrap{
+  flex-wrap: wrap;
+}
+.cm-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.cm-flex-1{
+  flex: 1;
+}
+
+.topic{
+  color: $topic;
+}
+.tc{
+  text-align: center;
+}
+.owt{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cp{
+  cursor: pointer;
+}
+.wh-all{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+html, body, #app{
+  height: 100%;
+}
+
+
+
+
+// 公共登录
+.cm-login{
+  padding-top: 100px;
+  .cm-login-form-title{
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .cm-login-form{
+    width: 400px;
+    margin: 0 auto;
+  }
+  .cm-login-submit{
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+  .cm-login-form-input-short{
+    width: 200px;
+  }
+  .cm-login-img-wrap{
+    width: 98px;
+    height: 38px;
+    border: 1px solid #DCDFE6;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+
+
+
+
+// 距离
+.mb-10{
+  margin-bottom: 10px;
+}
