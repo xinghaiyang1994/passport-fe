@@ -1,7 +1,7 @@
 <template>
   <el-container class="admin-index">
     <el-header class="ai-header-wrap clearfix">
-      <h2 class="ai-header fl">管理后台</h2>
+      <h2 class="ai-header fl">管理</h2>
       <div class="fr">
         <el-dropdown>
           <div class="ai-header-right-info el-dropdown-link">
