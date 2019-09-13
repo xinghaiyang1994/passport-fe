@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 interface Debounced {
   (value?: any): any,
   cancel?: () => any 
@@ -76,8 +78,28 @@ function debounce(fn: any, wait: number, immediate?: any) {
   return debounced
 }
 
+/**
+ * 根据枚举 key 获取枚举 value
+ * @param  {any} key
+ * @param  {array} arr 枚举数组
+ */
+function valueByKey(key: string, arr: Array<any>) {
+  if (!arr) return
+  let res: any = ''
+  arr.forEach(el => {
+    if (el.key === key) {
+      res = el.value
+    }
+  })
+  return res
+}
+
+// 自定义订阅观察模式
+const event = new Vue()
 
 export {
   tranTime,
-  debounce
+  debounce,
+  event,
+  valueByKey
 }

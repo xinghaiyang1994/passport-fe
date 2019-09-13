@@ -65,10 +65,54 @@ function postUserLogout() {
   })
 }
 
+function getAppList(data: any) {
+  return ajax({
+    url: API.APP_LIST,
+    data,
+    type: 'get'
+  })
+}
+
+function getAppDetail(data: any) {
+  return ajax({
+    url: API.APP_DETAIL,
+    data,
+    type: 'get'
+  })
+}
+
+function postAppDetele(data: any) {
+  return ajax({
+    url: API.APP_DETELE,
+    data
+  })
+}
+
+function postAppAdd(data: any) {
+  return ajax({
+    url: API.APP_ADD,
+    data
+  })
+}
+
+function postAppModify(data: any) {
+  return ajax({
+    url: API.APP_MODIFY,
+    data
+  })
+}
+
+
 export { 
   // 用户
   postUserRegiste,
   postUserLogin,
   getUserInfo,
-  postUserLogout
+  postUserLogout,
+  // 应用
+  getAppList,
+  getAppDetail,
+  postAppDetele,
+  postAppAdd,
+  postAppModify,
 }

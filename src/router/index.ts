@@ -9,6 +9,8 @@ const Register = () => import('../views/Register.vue')
 const Login = () => import('../views/Login.vue')
 // 管理
 const AdminIndex = () => import('../views/admin/Index.vue')
+// 应用列表
+const AppList = () => import('../views/admin/AppList.vue')
 
 Vue.use(Router)
 
@@ -25,7 +27,16 @@ export default new Router({
     },
     {
       path: '/admin',
-      component: AdminIndex
+      component: AdminIndex,
+      children: [
+        {
+          path: 'appList',
+          component: AppList,
+          meta: {
+            nav: '/admin/appList'
+          }
+        }
+      ]
     },
     {
       path: '/',

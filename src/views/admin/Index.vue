@@ -17,15 +17,17 @@
     </el-header>
     <el-container>
       <!-- 左侧菜单 -->
-      <el-aside width="200px" class="ai-nav-wrap">
-        <!-- <el-menu
-        default-active="1"
-        class="el-menu-vertical-demo">
-          <el-menu-item @click="$router.push('/admin/MerchantList')" index="1">
-            <i class="el-icon-menu"></i>
-            <span slot="title">商家列表</span>
+      <el-aside v-show="userInfo.isAdmin === 1" width="200px" class="ai-nav-wrap">
+        <el-menu
+          :default-active="$route.meta.nav">
+          <el-menu-item v-for="(item, index) in nav" 
+            :key="index" 
+            @click="chgNav(item)"
+            :index="item.url">
+            <i :class="item.icon"></i>
+            <span slot="title">{{item.name}}</span>
           </el-menu-item>
-        </el-menu> -->
+        </el-menu>
       </el-aside>
       <el-main>
         <router-view></router-view>
@@ -37,10 +39,27 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { State, Mutation, Action } from 'vuex-class'
+  import { event } from '../../utils/tools'
+  import { EVENT_ADMIN_CHG_NAV } from '../../utils/const'
   import { postUserLogout } from '../../api/actions'
+
+  interface NavItem {
+    url: string,
+    name: string,
+    icon: string,
+  }
 
   @Component
   export default class AdminIndex extends Vue {
+    // data
+    nav: Array<NavItem> = [
+      {
+        url: '/admin/appList',
+        name: '应用列表',
+        icon: 'el-icon-menu'
+      }
+    ]
+
     // computed
     @State('userInfo')
     userInfo: any
@@ -62,6 +81,11 @@
         console.log(err)
       })
     }
+    chgNav(item: NavItem) {
+      if (item.url !== this.$route.meta.nav) {
+        this.$router.push(item.url)
+      }
+    }
     @Mutation('updateUserInfo')
     updateUserInfo: any
     @Action('getUserInfo')
@@ -69,6 +93,9 @@
 
     // 生命周期
     created() {
+      event.$on(EVENT_ADMIN_CHG_NAV, () => {
+        this.chgNav(this.nav[0])
+      })
       this.getUserInfo()
     }
   }
@@ -98,6 +125,9 @@
   .admin-index{
     .el-menu{
       height: 100%;
+    }
+    .el-main{
+      padding: 40px;
     }
   }
 </style>

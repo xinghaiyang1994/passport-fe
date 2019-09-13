@@ -108,7 +108,7 @@
     // 生命周期
     created() {
       this.queryFrom = this.$route.query.from
-      console.log(this.queryFrom)
+      // console.log(this.queryFrom)
       this.updateImgLoginCaptcha()
     }
 

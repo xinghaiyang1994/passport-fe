@@ -82,11 +82,37 @@ html, body, #app{
   }
 }
 
-
+// 公共增删改查
+.curd{
+  .curd-head{
+    padding-right: 160px;
+    margin-bottom: 20px;
+  }
+  .curd-head-right{
+    margin-right: -160px;
+  }
+  .curd-fl-left{
+    line-height: 32px;
+    padding-right: 10px;
+    font-size: 14px;
+  }
+  .curd-must{
+    color: #FA5967;
+  }
+  .curd-block{
+    display: block;
+  }
+  .ta-c{
+    text-align: center;
+  }
+}
 
 
 
 // 距离
 .mb-10{
   margin-bottom: 10px;
+}
+.mb-30{
+  margin-bottom: 30px;
 }
