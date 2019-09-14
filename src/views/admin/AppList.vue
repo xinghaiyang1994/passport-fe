@@ -2,7 +2,7 @@
   <div class="curd">
     <!-- 筛选 -->
     <div ref="query" class="curd-head clearfix">
-      <div class="fl">
+      <div class="fl mr-20">
         <div class="clearfix">
           <div class="fl mr-30">
             <div class="clearfix">
@@ -11,6 +11,20 @@
               </div>
               <div class="fl">
                 <el-input @input="chgQueryField" v-model="query.name" size="small"></el-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fl">
+        <div class="clearfix">
+          <div class="fl mr-30">
+            <div class="clearfix">
+              <div class="curd-fl-left fl">
+                <span class="curd-must">*</span>唯一标识
+              </div>
+              <div class="fl">
+                <el-input @input="chgQueryField" v-model="query.code" size="small"></el-input>
               </div>
             </div>
           </div>
@@ -36,6 +50,11 @@
         <el-table-column
           prop="name"
           label="应用名称"
+          align="center">
+        </el-table-column>
+        <el-table-column
+          prop="code"
+          label="唯一标识"
           align="center">
         </el-table-column>
         <el-table-column
@@ -81,6 +100,9 @@
         <el-form-item label="应用名称" prop="name" :rules="checkLimitWord(20, true)">
           <el-input v-model="dialogForm.name"></el-input>
         </el-form-item>
+        <el-form-item label="唯一标识" prop="code" :rules="checkLimitWord(20, true)">
+          <el-input v-model="dialogForm.code"></el-input>
+        </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="dialogVisible = false" size="small">取 消</el-button>
@@ -104,18 +126,22 @@
   } from '../../api/actions'
   
   interface Query {
-    name: string
+    name: string,
+    code: string
   }
   interface DialogForm {
     id?: number,
-    name: string
+    name: string,
+    code: string
   }
 
-  let query = {
-    name: ''
+  let query: Query = {
+    name: '',
+    code: ''
   }
   let dialogForm = {
-    name: ''
+    name: '',
+    code: ''
   }
 
   @Component
@@ -147,7 +173,7 @@
       let page = JSON.parse(JSON.stringify(this.mixinPage))
       return {
         name: query.name,
-        type: query.type,
+        code: query.code,
         page: page.currentPage,
         pageSize: page.pageSize
       }
@@ -206,7 +232,8 @@
         let resData = res.data
         this.dialogForm = {
           id: resData.id,
-          name: resData.name
+          name: resData.name,
+          code: resData.code
         }
         this.isModify = true
         this.dialogVisible = true
