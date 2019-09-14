@@ -29,7 +29,8 @@ import {
   TableColumn,
   Pagination,
   Dialog,
-  Loading
+  Loading,
+  MessageBox
 } from 'element-ui'
 
 Vue.use(Button)
@@ -53,6 +54,7 @@ Vue.use(Pagination)
 Vue.use(Dialog)
 Vue.use(Loading.directive)
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
 
 allFilter(Vue)
 Vue.config.productionTip = false

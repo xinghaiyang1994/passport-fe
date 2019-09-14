@@ -18,10 +18,10 @@ const API = {
 
   // 应用
   APP_LIST: `${DOMAIN}/app/list`,    // 应用列表(翻页)
-  APP_DETAIL: `${DOMAIN}`,    // 单个应用详情
-  APP_DETELE: `${DOMAIN}`,    // 删除单个应用
+  APP_DETAIL: `${DOMAIN}/app/detail`,    // 单个应用详情
+  APP_DETELE: `${DOMAIN}/app/detele`,    // 删除单个应用
   APP_ADD: `${DOMAIN}/app/add`,    // 新增单个应用
-  APP_MODIFY: `${DOMAIN}`,    // 单个应用修改
+  APP_MODIFY: `${DOMAIN}/app/modify`,    // 单个应用修改
 
 }
 

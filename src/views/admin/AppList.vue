@@ -96,13 +96,11 @@
   import { debounce, valueByKey } from '../../utils/tools'
   import { checkLimitWord } from '../../utils/check'
   import {
-    postDeletetItem,
-    postModifyItem,
-    getDetailItem
-  } from '../../api/mock'
-  import {
     getAppList,
     postAppAdd,
+    getAppDetail,
+    postAppDetele,
+    postAppModify
   } from '../../api/actions'
   
   interface Query {
@@ -176,7 +174,7 @@
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        postDeletetItem({
+        postAppDetele({
           id: item.id
         }).then(res => {
           this.$message({
@@ -201,7 +199,7 @@
     }
     // 打开编辑
     openModify(item: DialogForm) {
-      getDetailItem({
+      getAppDetail({
         id: item.id
       }).then(res => {
         console.log(res)
@@ -258,7 +256,7 @@
     // 修改
     modifyItem() {
       let data = this.tranDialogData('modify')
-      postModifyItem(data).then(res => {
+      postAppModify(data).then(res => {
         console.log(res)
         this.dialogVisible = false
         this.getList()
