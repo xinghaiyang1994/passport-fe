@@ -185,7 +185,14 @@
       getAppList(data).then(res => {
         console.log(res)
         let resData = res.data
-        this.list = resData.list
+        const list = resData.list
+        if (list.length === 0 && this.mixinPage.currentPage > 1) {
+          // 最后一页删除后没有数据问题
+          this.mixinPage.currentPage -- 
+          return this.getList()
+        } else {
+          this.list = list
+        }
         this.mixinPage.total = resData.total
         this.loading = false
       }).catch(err => {
