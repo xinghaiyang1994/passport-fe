@@ -82,6 +82,23 @@ html, body, #app{
   }
 }
 
+@media screen and (max-width: 414px) {
+  .cm-login{
+    .cm-login-form{
+      width: 300px;
+      margin: 0 auto;
+    }
+    .cm-login-submit{
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    .cm-login-form-input-short{
+      width: 100px;
+    }
+  }
+}
+
 // 公共增删改查
 .curd{
   .curd-head{
